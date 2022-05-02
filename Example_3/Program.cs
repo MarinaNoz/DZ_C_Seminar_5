@@ -1,5 +1,4 @@
-﻿// Задайте одномерный массив, заполненный случайными числами. 
-//Найдие сумму элементов, стоящих на нечетных позициях.
+﻿// Задайте массив вещественных чисел. Найдите разницу между макс. и миним. элементом массива
 
 Console.WriteLine(" Введите количество элементов массива " );
 int arrayLength = Convert.ToInt32(Console.ReadLine());
@@ -11,7 +10,7 @@ void FillArray(int[] array)
 {
     for(int i = 0; i < array.Length; i++)
     {
-        array[i] = new Random().Next(-100,100);
+        array[i] = new Random().Next(0,100);
     }
 }
 void WriteArray(int[] array)
@@ -22,12 +21,16 @@ void WriteArray(int[] array)
     }
     Console.WriteLine();
 }
-int sumOddElements = 0;
+int minNumber = int.MaxValue;
+int maxNumber = int.MinValue;
+
 for (int i = 0; i <numbers.Length; i++)
 {
-    if(i %2 == 1)
-    { 
-       sumOddElements += numbers[i];
-    }
+    if (numbers[i] < minNumber)
+        minNumber = numbers[i];
+    if (numbers[i] > maxNumber)
+        maxNumber = numbers[i];
+    
 }
-Console.WriteLine($"Сумма нечетных элементов: " +sumOddElements);
+Console.WriteLine($"Разница: " +(maxNumber-minNumber));
+
